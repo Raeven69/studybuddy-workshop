@@ -1,0 +1,4 @@
+1. Feature beschrijving: Een moeilijkheidsgraad-optie waarmee gebruikers kunnen aangeven hoe complex een taak is. De keuze moet zijn tussen makkelijk, gemiddeld en moeilijk.
+2. User story: Als student wil ik een moeilijkheidsgraad-optie zodat ik bij kan houden hoe moeilijk een bepaalde taak is. Dit helpt bij het inschatten van tijd en prioriteit.
+3. Acceptatie criteria: Wanneer er bij de taak een nieuwe dropdown optie is die de moeilijkheidsgraad aangeeft, en deze ook met de taak opslaat, de moeilijkheidsgraad moet persistent bij de taak weergegeven blijven worden.
+4. Technische overwegingen: Er moet een dropdown worden toegevoegd aan de frontend en deze moet mee verstuurd worden naar de api. De API endpoint moet aangepast worden om de nieuwe optie te accepteren. De database-structuur moet een nieuw veld hebben voor deze nieuwe optie.
