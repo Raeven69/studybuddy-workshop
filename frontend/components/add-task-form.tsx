@@ -17,6 +17,7 @@ export function AddTaskForm({ onAddTask }: AddTaskFormProps) {
     title: "",
     subject: "",
     estimatedMinutes: "",
+    difficulty: "medium",
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,10 +33,11 @@ export function AddTaskForm({ onAddTask }: AddTaskFormProps) {
         title: formData.title,
         subject: formData.subject,
         estimatedMinutes: minutes,
+        difficulty: formData.difficulty as any,
       })
 
       // Reset and close
-      setFormData({ title: "", subject: "", estimatedMinutes: "" })
+      setFormData({ title: "", subject: "", estimatedMinutes: "", difficulty: "medium" })
       setIsExpanded(false)
     } finally {
       setIsSubmitting(false)
@@ -128,6 +130,22 @@ export function AddTaskForm({ onAddTask }: AddTaskFormProps) {
               className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="difficulty" className="mb-1.5 block text-sm font-semibold text-slate-700">
+            Moeilijkheid
+          </label>
+          <select
+            id="difficulty"
+            value={formData.difficulty}
+            onChange={(e) => setFormData((prev) => ({ ...prev, difficulty: e.target.value }))}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          >
+            <option value="easy">Makkelijk</option>
+            <option value="medium">Gemiddeld</option>
+            <option value="hard">Moeilijk</option>
+          </select>
         </div>
 
         <button

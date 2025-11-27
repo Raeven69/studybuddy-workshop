@@ -1,4 +1,4 @@
-import { StudyTask } from "./types";
+import { StudyTask, CreateTaskInput } from "./types";
 
 // In-memory database with seeded data
 const INITIAL_TASKS: StudyTask[] = [
@@ -9,6 +9,7 @@ const INITIAL_TASKS: StudyTask[] = [
     estimatedMinutes: 60,
     status: "todo",
     createdAt: new Date(Date.now() - 86400000).toISOString(),
+    difficulty: "medium",
   },
   {
     id: "2",
@@ -17,6 +18,7 @@ const INITIAL_TASKS: StudyTask[] = [
     estimatedMinutes: 45,
     status: "in-progress",
     createdAt: new Date(Date.now() - 172800000).toISOString(),
+    difficulty: "medium",
   },
   {
     id: "3",
@@ -25,6 +27,7 @@ const INITIAL_TASKS: StudyTask[] = [
     estimatedMinutes: 120,
     status: "todo",
     createdAt: new Date(Date.now() - 43200000).toISOString(),
+    difficulty: "medium",
   },
   {
     id: "4",
@@ -33,6 +36,7 @@ const INITIAL_TASKS: StudyTask[] = [
     estimatedMinutes: 30,
     status: "done",
     createdAt: new Date(Date.now() - 259200000).toISOString(),
+    difficulty: "medium",
   },
 ];
 
@@ -48,12 +52,13 @@ class Database {
     return this.tasks.find((task) => task.id === id);
   }
 
-  createTask(input: Omit<StudyTask, "id" | "status" | "createdAt">): StudyTask {
+  createTask(input: CreateTaskInput): StudyTask {
     const newTask: StudyTask = {
       ...input,
       id: String(this.nextId++),
       status: "todo",
       createdAt: new Date().toISOString(),
+      difficulty: input.difficulty ?? "medium",
     };
     this.tasks.push(newTask);
     return newTask;

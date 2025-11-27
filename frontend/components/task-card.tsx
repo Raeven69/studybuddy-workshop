@@ -62,6 +62,13 @@ export function TaskCard({ task, onStatusChange, onDelete, isUpdating }: TaskCar
             <Clock className="h-4 w-4 text-slate-400" />
             <span>{task.estimatedMinutes} min</span>
           </div>
+          <div className="flex items-center gap-1.5">
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">
+              {task.difficulty === "easy" && "Makkelijk"}
+              {task.difficulty === "medium" && "Gemiddeld"}
+              {task.difficulty === "hard" && "Moeilijk"}
+            </span>
+          </div>
         </div>
       </div>
 
